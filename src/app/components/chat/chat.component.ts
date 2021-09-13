@@ -63,7 +63,14 @@ export class ChatComponent implements OnInit {
     this.chatService
       .getMessages()
       .subscribe((message: any) => {
-        this.getGrpMessages();
+        console.log(message, "line 66");
+
+        const obj = {
+          user: message.user,
+          message: message.message,
+          time: new Date().toLocaleString('en-US', { hour: 'numeric', hour12: true, minute: 'numeric' })
+        }
+        this.messages.push(obj)
         this.chatCounter += 1;
 
       });
@@ -111,6 +118,7 @@ export class ChatComponent implements OnInit {
       subscribe(
         (res) => {
           console.log(res);
+          this.chatService.sendMessage(this.chatRoom.chatName, this.newMessage, this.userName);
 
         }, err => {
           console.log(err);
@@ -120,7 +128,7 @@ export class ChatComponent implements OnInit {
 
     console.log(this.chatRoom.chatName);
 
-    this.chatService.sendMessage(this.chatRoom.chatName, this.newMessage, this.userName);
+
     this.newMessage = '';
     this.time = new Date();
     this.isToxic = false;
