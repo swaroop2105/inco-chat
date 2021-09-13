@@ -10,8 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { TFJSModule } from 'ngx-tfjs';
 import { EmojifyModule } from 'angular-emojify';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/landing/landing.component';
@@ -22,6 +20,7 @@ import { ChatRoomComponent } from './dilogModels/chat-room/chat-room.component';
 import { ConfirmDialogComponent } from './dilogModels/confirm-dialog/confirm-dialog.component';
 import { ChatPasswordComponent } from './dilogModels/chat-password/chat-password.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { MaterialModule } from './material/material.module';
 
 
 
@@ -47,12 +46,11 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: { transp
     SocketIoModule.forRoot(config),
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    TFJSModule,
     EmojifyModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    PickerModule
+    PickerModule,
+    MaterialModule
 
 
 

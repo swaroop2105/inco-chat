@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToxicityService } from 'src/app/services/toxicity.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from 'src/app/dilogModels/confirm-dialog/confirm-dialog.component';
@@ -52,7 +51,7 @@ export class ChatComponent implements OnInit {
 
   userList: any = []
   groupMembers: any = []
-  constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private toxiSevice: ToxicityService, private snackBar: MatSnackBar) { }
+  constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -221,21 +220,10 @@ export class ChatComponent implements OnInit {
 
 
 
-  async classify() {
-    console.log('classify called');
-
-    const res = await this.toxiSevice.detect(this.newMessage)
-    console.log(res);
-    if (res[3].results[0].match) {
-      // this.isToxic = true;
-      this.snackBar.open('⚠️ Toxic word alert!!!', 'dismiss', { duration: 5000, horizontalPosition: 'end' })
-    }
-  }
 
 
-  revert() {
-    this.isToxic = false;
-  }
+
+
 
   addEmoji(e) {
     this.newMessage += e.emoji.native;

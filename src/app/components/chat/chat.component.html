@@ -128,7 +128,7 @@
 
                         <emoji-mart *ngIf="isEmoji" (emojiClick)="addEmoji($event)" [showPreview]="false" [style]="{ position: 'absolute',width:'59%', bottom: '50px', right: '20px' }"  class="emojiSet"></emoji-mart>
 
-                        <textarea  type="text" [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" (keyup)="$event.keyCode == 32 && classify()"  (keyup)="$event.keyCode == 8 && revert()" class="customInputStyle form-control" style="width: 300px;" placeholder="Type a message" ></textarea>
+                        <textarea  type="text" [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()"  class="customInputStyle form-control" style="width: 300px;" placeholder="Type a message" ></textarea>
 
 
                       </div>
@@ -256,7 +256,7 @@
                           <div class="col-10" >
                             <emoji-mart *ngIf="isEmoji" (emojiClick)="addEmoji($event)" [showPreview]="false" [style]="{ position: 'absolute',width:'90%', bottom: '50px', right: '10px' }"  class="emojiSet"></emoji-mart>
 
-                            <textarea  type="text" [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()" (keyup)="$event.keyCode == 32 && classify()"  (keyup)="$event.keyCode == 8 && revert()" class="customInputStyle form-control" style="width: 280px;" placeholder="Type a message" ></textarea>
+                            <textarea  type="text" [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 && sendMessage()"    class="customInputStyle form-control" style="width: 280px;" placeholder="Type a message" ></textarea>
 
                           </div>
                         <div class="col-1">
