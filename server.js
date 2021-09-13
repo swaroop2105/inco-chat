@@ -5,10 +5,10 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/angular-chat-app'));
+app.use(express.static('./dist/angularChatApp'));
 
 app.get('/*', (req, res) =>
-  res.sendFile('index.html', { root: '/dist/angular-chat-app' }),
+  res.sendFile('index.html', { root: '/angularChatApp' }),
 );
 
 // Start the app by listening on the default Heroku port
