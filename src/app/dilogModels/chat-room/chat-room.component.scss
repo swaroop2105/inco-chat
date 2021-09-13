@@ -1,0 +1,16 @@
+$text-color:rgb(40, 113, 131);
+$primary-color:rgb(51, 49, 50);
+.createButton{
+  background: $text-color !important;
+  color: white !important;
+}
+.mat-form-field{
+  width: 100%;
+}
+.mat-dialog-content{
+  width: 100%;
+  overflow-y: hidden;
+}
+.leftMargin{
+  margin-left: 20px;
+}

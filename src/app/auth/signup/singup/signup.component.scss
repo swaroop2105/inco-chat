@@ -1,0 +1,54 @@
+$primary-color:rgb(51, 49, 50);
+// $text-color:rgb(246, 71, 18);
+$text-color:rgb(40, 113, 131);
+$success:rgb(100, 210, 163);
+$light:white;
+
+.layout{
+  position: relative;
+  height: 250px;
+  width: 100%;
+  background-color: $text-color;
+}
+.loginCard{
+  position: relative;
+  margin-top: -50px;
+  width: 50%;
+  height: auto;
+  background-color: white;
+  box-shadow: -15px 12px 34px -25px  black;
+  padding: 2%;
+}
+.loginHeader{
+  background-color: $primary-color;
+}
+.customBtn{
+  background-color: $text-color;
+}
+.mat-raised-button{
+  background-color: $text-color;
+}
+.mat-form-field{
+  width: 100%;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: $text-color !important;
+
+ }
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: $text-color !important;
+}
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color:  $text-color !important;
+ }
+ @media screen and (max-width:500px){
+
+  .loginCard{
+    width: 95%;
+    margin-top: -180px;
+  }
+
+ }

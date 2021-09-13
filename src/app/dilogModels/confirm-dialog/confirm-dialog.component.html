@@ -1,0 +1,10 @@
+<h3 matDialogTitle ><b>Do you want to leave the group</b></h3>
+<mat-dialog-content>
+  <p>Hey {{data.name}}, <br> all previous chats of yours will be deleted</p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close="no">Keep me in</button>
+  <button mat-raised-button class="logoutButton" mat-dialog-close="yes">Quit</button>
+</mat-dialog-actions>

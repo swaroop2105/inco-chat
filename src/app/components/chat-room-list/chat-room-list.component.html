@@ -1,0 +1,98 @@
+<div class="layout">
+  <div class="container">
+    <div class="d-flex justify-content-end">
+      <button class="mt-5" data-step="2" data-intro="Click on the button to create new chatRoom" mat-raised-button (click)="createChatRoom()" ><mat-icon>add</mat-icon> Add new chat room</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6" data-step="1"  data-intro="list of your chatRooms">
+
+    <mat-tab-group >
+      <mat-tab label="My ChatRooms" >
+        <div class="chatListCard mt-2" >
+          <ul class="list-group" >
+            <li class="list-group-item" *ngIf="userRooms.length<1">
+              <p class="text-center textColor" ><i><b>It seems like you don't have any chatRoom, create one today!</b></i></p>
+            </li>
+            <li class="list-group-item"  *ngFor="let rooms of userRooms">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <img (click)="chat(rooms.chatName)" class="cursorStyle" src="https://icon-library.com/images/group-chat-icon/group-chat-icon-16.jpg" class="ChatImage" alt="">
+                </div>
+                <div>
+                  <span class="cursorStyle" (click)="joinPublicRoom(rooms._id,rooms.isPrivate,rooms.chatName)" > <b>{{rooms.chatName}}</b></span>
+
+                </div>
+                <div>
+                  <p class="d-flex align-items-center"><mat-icon>groups </mat-icon> <small class="text-success">({{rooms.groupMembers.length}})</small></p>
+
+                </div>
+                <div>
+                  <mat-icon class="text-muted"  *ngIf="rooms.isPrivate">lock</mat-icon>
+                  <mat-icon class="text-muted" *ngIf="!rooms.isPrivate">public</mat-icon>
+                  <p class="noteText" *ngIf="rooms.isPrivate"><small >(Private)</small></p>
+                  <p class="noteText" *ngIf="!rooms.isPrivate"><small >(Public)</small></p>
+                </div>
+                <div>
+                  <mat-icon color='warn'>delete</mat-icon>
+                </div>
+              </div>
+            </li>
+      </ul>
+      </div>
+      </mat-tab>
+      <mat-tab label="Chat Rooms">
+        <div class="chatListCard mt-2" >
+        <ul class="list-group">
+          <li class="list-group-item">
+            <mat-form-field>
+              <input type="text" placeholder="Search ChatRoom" matInput>
+            </mat-form-field>
+          </li>
+          <div *ngFor="let rooms of allRooms" (click)="joinPublicRoom(rooms._id,rooms.isPrivate,rooms.chatName)">
+            <li class="list-group-item" *ngIf="rooms.creator!=currentUserId" >
+              <div class="d-flex align-items-center justify-content-between ">
+                <div >
+                  <img  class="cursorStyle" src="https://icon-library.com/images/group-chat-icon/group-chat-icon-16.jpg" class="ChatImage" alt="">
+                </div>
+                <div >
+                  <p><span  class="cursorStyle" > <b>{{rooms.chatName}}</b></span></p>
+
+                </div>
+                <div>
+                  <p class="d-flex align-items-center"><mat-icon>groups </mat-icon> <small class="text-success">({{rooms.groupMembers.length}})</small></p>
+
+                </div>
+                <div  >
+
+                  <mat-icon class="text-muted"  *ngIf="rooms.isPrivate">lock</mat-icon>
+                  <mat-icon class="text-muted" *ngIf="!rooms.isPrivate">public</mat-icon>
+
+                  <p class="noteText" *ngIf="rooms.isPrivate"><small >(Private)</small></p>
+                  <p class="noteText" *ngIf="!rooms.isPrivate"><small >(Public)</small></p>
+                </div>
+                <div>
+                  <small class="text-center"><b>Admin</b></small>
+                  <p class="noteText text-center"><small >({{rooms.createdBy[0].userName}})</small></p>
+                </div>
+                <div >
+                  <small style="cursor: pointer; " class="text-success joinBox" ><b>Join</b></small>
+                </div>
+              </div>
+            </li>
+          </div>
+    </ul>
+    </div></mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="col-lg-3"></div>
+</div>
+
+
+
+
+
+
+

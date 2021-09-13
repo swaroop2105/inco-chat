@@ -1,0 +1,294 @@
+$text-color:rgb(40, 113, 131);
+$primary-color:rgb(51, 49, 50);
+$success:rgb(96, 255, 162);
+$danger:#f44336;
+.layoutColor{
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  background-color: $text-color;
+}
+[contenteditable] {
+  -webkit-appearance: textfield;
+  appearance: textfield
+}
+.adminBtn{
+  padding: 1px;
+  border: 1px solid gray;
+  border-radius: 10%;
+  box-shadow: -15px 12px 34px -25px  black;
+}
+.maincard{
+  position: absolute;
+  height: 630px;
+  width: 90%;
+  top: 80px;
+  box-shadow: -15px 12px 34px -25px  black;
+  background-color: white;
+
+}
+.backgroundColor{
+  background-color: rgb(51, 49, 50);
+  position: static;
+
+}
+.userImage{
+  width: 60%;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid gray;
+  object-fit: cover;
+}
+.text-success{
+  color: $success !important;
+}
+.text-danger{
+  color: $danger !important;
+}
+.sideMenu{
+  position: static;
+  height: 540px;
+  overflow-y: scroll;
+  overflow-x: unset;
+}
+
+.messageText{
+  padding-right: 10px;
+  padding-left: 40px;
+  padding-top: 2px;
+  padding-bottom: 20px;
+}
+.textColor{
+  color: $text-color;
+}
+
+.leftMargin{
+  padding-top: 4%;
+  padding-left:8%;
+}
+
+.card{
+  border: none;
+}
+.cardRight{
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 3% 100%, 3% 6%);
+  background-color: $text-color;
+  padding-left: 20px;
+  box-shadow: -15px 12px 34px -25px  black;
+}
+.paperClip{
+  transform: rotate(-30deg);
+
+}
+.cardLeft{
+  clip-path: polygon(0 0, 100% 0, 96% 6%, 96% 100%, 0 100%, 0% 50%);
+  background-color: #eee;
+  padding-right: 20px;
+  box-shadow: -15px 12px 34px -25px  black;
+}
+input[type="file"] {
+  display: none;
+
+
+}
+
+.messageCard{
+  height: 480px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.sideMenu::-webkit-scrollbar
+{
+width: 5px;
+background-color: #F5F5F5;
+}
+.sideMenu::-webkit-scrollbar-thumb
+{
+border-radius: 10px;
+
+-webkit-box-shadow: inset 0px 0px 0px rgb(143, 143, 143);
+background-color: rgb(136, 133, 134);
+}
+p{
+  margin: 0 !important;
+}
+
+
+.messageCard::-webkit-scrollbar
+{
+  padding-left: 10%;
+width: 5px;
+background-color: #F5F5F5;
+}
+.messageCard::-webkit-scrollbar-thumb
+{
+border-radius: 10px;
+
+-webkit-box-shadow: inset 0px 0px 0px rgb(143, 143, 143);
+background-color: rgb(136, 133, 134);
+}
+.typeMessage{
+  position: relative;
+  margin-top: -40px;
+  width: 100%;
+}
+.customInputStyle{
+
+  width: 100% !important;
+  height: 25px;
+  max-height: 50px;
+}
+.sendButton{
+  transform: rotate(40deg);
+
+}
+.cursorStyle{
+  cursor: pointer;
+}
+.time{
+  font-size: small;
+}
+.mat-badge-content{
+  background : black
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.mat-toolbar{
+  background-color: $primary-color;
+}
+/* $primary-color:rgb(51, 49, 50);
+$text-color:rgb(246, 71, 18);
+$success:rgb(100, 210, 163);
+$light:white; */
+
+
+
+
+
+/* Cool scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+  display: block
+}
+::-webkit-scrollbar-thumb {
+  background: #e4eaf5;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(196, 201, 211)
+}
+/* Center stuff and background */
+
+.emojiSet{
+  width: 100% !important;
+}
+.emoji-mart-preview{
+  display: none !important;
+}
+
+/** This is the css of the input **/
+#w-input-container {
+  width: 100%;
+  min-height: 20px;
+  box-sizing: border-box;
+  padding: 9px 18px 11px;
+  margin: 5px 10px;
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 21px;
+}
+
+.w-input-text-group {
+  position: relative;
+}
+
+.w-placeholder {
+  color: #a0a0a0;
+  top: 0;
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  opacity: 0;
+  transition: 0.2s padding ease-in-out;
+}
+
+#w-input-text {
+  overflow-x: hidden;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  z-index: 1;
+  max-height: 100px;
+  min-height: 20px;
+  padding: 0 0 0 2px;
+  outline: 0;
+  transition: 0.2s padding ease-in-out;
+}
+
+#w-input-text:empty + .w-placeholder {
+  opacity: 1;
+}
+
+#w-input-text:focus + .w-placeholder {
+  padding: 0 6px 0px;
+}
+
+#w-input-text:focus {
+  padding: 0 6px 0px;
+}
+
+.focuser{
+  border: 1px solid gray;
+}
+.mbl{
+  display: none;
+}
+@media screen and (max-width:800px){
+  .nmbl{
+    display: none;
+  }
+  .mbl{
+    display: block;
+  }
+  .userImage{
+    width: 100%;
+  }
+  .maincard{
+    width: 100%;
+    height: 700px;
+    margin-top: -80px;
+    box-shadow: none;
+  }
+  .mblmessage{
+
+  }
+
+  .typeMobileMessage {
+    position: fixed;
+    width: 100%;
+    bottom : 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+  .reversal{
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: scroll;
+    width: 100%;
+    height: 550px;
+  }
+  ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color:$primary-color;
+
+    }
+    .sendButton{
+      transform: rotate(40deg);
+      margin-top: -10px !important;
+    }
+}

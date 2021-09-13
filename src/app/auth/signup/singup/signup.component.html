@@ -1,0 +1,49 @@
+<div class="layout"></div>
+<div class="d-flex justify-content-center">
+  <div class="loginCard">
+    <div class="loginHeader">
+      <h3 class="text-light text-center p-3">Lets get started!</h3>
+    </div>
+
+      <div class="mt-5">
+        <form [formGroup]="signupForm">
+
+          <div data-step="1" data-intro="Enter a name for your identity in chating">
+            <mat-form-field>
+              <mat-label>Display Name</mat-label>
+              <input type="text"  matInput required formControlName="userName" >
+          </mat-form-field>
+          </div>
+
+          <div data-step="2" data-intro="Enter a password for security">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input type="password"  matInput required formControlName="password" >
+          </mat-form-field>
+          </div>
+
+          <div data-step="3" data-intro="Confirm the password for security">
+            <mat-form-field>
+              <mat-label>Confirm Password</mat-label>
+              <input type="password"  matInput required formControlName="cpassword" >
+          </mat-form-field>
+          </div>
+
+
+
+
+          <div class="d-grid gap-2 col-10 col-lg-6 mx-auto mt-3 mb-3 mt-lg-5" data-step="4" data-intro="Click on signup and get started!">
+            <button mat-raised-button color="primary" type="submit" (click)="signup()" [disabled]="!signupForm.valid" >Signup</button>
+
+          </div>
+        </form>
+      </div>
+
+
+
+
+
+
+  </div>
+
+</div>

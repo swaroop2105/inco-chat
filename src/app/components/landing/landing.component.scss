@@ -1,0 +1,78 @@
+$primary-color:rgb(51, 49, 50);
+// $text-color:rgb(246, 71, 18);
+$text-color:rgb(40, 113, 131);
+$success:rgb(100, 210, 163);
+$light:white;
+.chatImage{
+  width: 50%;
+}
+.row{
+  margin: 0;
+}
+.mat-raised-button{
+  background-color: $text-color;
+}
+.incoText{
+  color: $text-color;
+}
+.chatText{
+  color: $primary-color;
+}
+.insider{
+  margin: 20%;
+}
+h1{
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+.signLog{
+  font-size: 15px;
+  margin-right: 40px;
+}
+.svgWidth{
+  width: 600px;
+  height: 550px;
+}
+
+#firstCircle{
+  animation: dotAnimator 2s linear infinite alternate;
+}
+#secondCircle{
+  animation: dotAnimator 2s 0.5s linear infinite alternate;
+}
+#thirdCircle{
+  animation: dotAnimator 2s 1s linear infinite alternate;
+}
+@keyframes dotAnimator {
+  0%{
+    transform: translateY(0);
+    fill: rgb(223, 223, 223);
+
+  }
+  50% {
+    transform: translateY(-10px);
+    fill: $primary-color;
+  }
+  100%{
+    transform: translateY(0);
+    fill: $primary-color;
+  }
+}
+
+@media screen and (max-width:500px){
+  .signLog{
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .svgWidth{
+    width: 320px;
+    height: 250px;
+  }
+  .insider{
+    margin: 10%;
+  }
+}

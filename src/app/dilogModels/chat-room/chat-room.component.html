@@ -1,0 +1,35 @@
+<h3 matDialogTitle ><b>Create ChatRoom</b></h3>
+<mat-dialog-content>
+  <form [formGroup]="chatRoom">
+    <mat-form-field>
+      <mat-label>ChatRoom Name</mat-label>
+      <input type="text" required matInput formControlName="chatRoomName">
+    </mat-form-field>
+
+      <mat-radio-group class="mt-3">
+
+          <mat-radio-button checked (click)="isPublicRoom()" value="public">Public</mat-radio-button>
+          <mat-radio-button class="leftMargin" (click)="isPrivateRoom()" value="private">Private</mat-radio-button>
+
+      </mat-radio-group>
+
+
+
+    <mat-form-field *ngIf="isPrivate" class="mt-3">
+      <mat-label>ChatRoom Password</mat-label>
+      <input type="text" required matInput formControlName="chatpassword">
+    </mat-form-field>
+
+
+
+
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="mt-2">
+
+  <button mat-raised-button mat-dialog-close>Quit</button>
+  <button mat-raised-button mat-dialog-close class="createButton" (click)="createRoom()">Create Room</button>
+</mat-dialog-actions>
