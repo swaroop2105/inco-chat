@@ -108,6 +108,7 @@ export class ChatComponent implements OnInit {
   }
   sendMessage() {
     this.closeEmoji()
+    this.chatService.sendMessage(this.chatRoom.chatName, this.newMessage, this.userName);
     const obj = {
       roomId: this.id,
       user: this.userName,
@@ -118,20 +119,19 @@ export class ChatComponent implements OnInit {
       subscribe(
         (res) => {
           console.log(res);
-          this.chatService.sendMessage(this.chatRoom.chatName, this.newMessage, this.userName);
+
 
         }, err => {
           console.log(err);
+
 
         }
       )
 
     console.log(this.chatRoom.chatName);
 
-
     this.newMessage = '';
-    this.time = new Date();
-    this.isToxic = false;
+
   }
 
   onSelectFile(event: any) { // called each time file input changes
