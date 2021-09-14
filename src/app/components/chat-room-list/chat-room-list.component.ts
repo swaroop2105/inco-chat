@@ -7,6 +7,8 @@ import * as introJs from 'intro.js'
 import { MatDialog } from '@angular/material/dialog';
 import { ChatRoomComponent } from 'src/app/dilogModels/chat-room/chat-room.component';
 import { ChatPasswordComponent } from 'src/app/dilogModels/chat-password/chat-password.component';
+import { ToastrService } from 'ngx-toastr';
+import { ConfirmDialogComponent } from 'src/app/dilogModels/confirm-dialog/confirm-dialog.component';
 @Component({
   selector: 'app-chat-room-list',
   templateUrl: './chat-room-list.component.html',
@@ -21,6 +23,7 @@ export class ChatRoomListComponent implements OnInit {
   userRooms: any;
   allRooms: any;
   currentUserId: any;
+  value: any
 
 
 
@@ -30,7 +33,7 @@ export class ChatRoomListComponent implements OnInit {
     chatRoomName: this.chatRoomName
   })
 
-  constructor(private router: Router, private chatService: ChatService, private apiService: ApiService, private dialog: MatDialog) { }
+  constructor(private router: Router, private chatService: ChatService, private apiService: ApiService, private dialog: MatDialog, private toastService: ToastrService) { }
 
   ngOnInit(): void {
     this.currentUserId = localStorage.getItem('userId')
@@ -164,6 +167,63 @@ export class ChatRoomListComponent implements OnInit {
 
       })
     }
+  }
+
+  logout() {
+
+
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { name: localStorage.getItem('userName'), text: 'do you really want to logout', logout: true } })
+
+    dialogRef.afterClosed().
+      subscribe(
+        (res) => {
+          if (res == 'yes') {
+            localStorage.clear();
+            this.router.navigate(['/landing']);
+            this.toastService.info('', 'logged you out')
+          } else {
+
+          }
+        }, err => {
+          console.log(err);
+
+        }
+      )
+
+
+
+
+
+
+
+
+
+
+
+  }
+  deleteChatRoom(id: any) {
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { name: localStorage.getItem('userName'), text: 'Are you sure, you want to delete the chatRoom', delete: true } })
+
+    dialogRef.afterClosed().
+      subscribe(
+        (res) => {
+          if (res == 'yes') {
+            this.chatService.deleteChatRoom(id).
+              subscribe(
+                (res) => {
+                  this.getUserChatRooms()
+                }, err => {
+                  this.toastService.error(err.error.message)
+                }
+              )
+          } else {
+
+          }
+        }, err => {
+          console.log(err);
+
+        }
+      )
   }
 
 

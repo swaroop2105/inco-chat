@@ -21,6 +21,7 @@ import { ConfirmDialogComponent } from './dilogModels/confirm-dialog/confirm-dia
 import { ChatPasswordComponent } from './dilogModels/chat-password/chat-password.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { MaterialModule } from './material/material.module';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 
@@ -36,7 +37,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: { transp
     SignupComponent,
     ChatRoomComponent,
     ConfirmDialogComponent,
-    ChatPasswordComponent
+    ChatPasswordComponent,
+    FilterPipe
 
   ],
   imports: [

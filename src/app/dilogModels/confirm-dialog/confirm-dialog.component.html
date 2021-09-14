@@ -1,10 +1,13 @@
 <h3 matDialogTitle ><b>Do you want to leave the group</b></h3>
 <mat-dialog-content>
-  <p>Hey {{data.name}}, <br> do you really want to quit the chatRoom?</p>
+  <p>Hey {{data.name}}, <br>{{data.text}} </p>
 
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-raised-button mat-dialog-close="no">Keep me in</button>
-  <button mat-raised-button class="logoutButton" mat-dialog-close="yes">Quit</button>
+  <button mat-raised-button mat-dialog-close="no" *ngIf="!data.delete">Keep me in</button>
+  <button mat-raised-button mat-dialog-close="no" *ngIf="data.delete && !data.logout">Cancel</button>
+  <button mat-raised-button class="logoutButton" mat-dialog-close="yes" *ngIf="!data.logout && !data.delete">Quit</button>
+  <button mat-raised-button class="logoutButton" mat-dialog-close="yes" *ngIf="data.logout">Logout</button>
+  <button mat-raised-button class="logoutButton" mat-dialog-close="yes" *ngIf="data.delete && !data.logout">Delete</button>
 </mat-dialog-actions>

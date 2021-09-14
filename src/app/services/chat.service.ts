@@ -44,6 +44,9 @@ export class ChatService {
   sendNewMessage(data: any) {
     return this._http.post(environment.baseUrl + '/chat/message', data)
   }
+  deleteChatRoom(id: any) {
+    return this._http.delete(environment.baseUrl + '/chat/' + id)
+  }
 
   private socket = io('https://nest-chat-backend.herokuapp.com', { transports: ['websocket'] });
 

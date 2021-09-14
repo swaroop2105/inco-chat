@@ -3,7 +3,10 @@ $primary-color:rgb(51, 49, 50);
 $text-color:rgb(40, 113, 131);
 $success:rgb(40, 250, 92);
 $light:white;
-
+.signLog{
+  font-size: 15px;
+  margin-right: 40px;
+}
 .layout{
   position: relative;
   height: 250px;
@@ -74,7 +77,14 @@ $light:white;
   }
 
 }
-
+.addChatMbl{
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+.buttonColor{
+  background-color: $text-color !important;
+}
 @media screen and (max-width:500px){
   .chatListCard{
     margin-top: -180px;
@@ -94,11 +104,24 @@ $light:white;
   align-items: center !important;
 }
 }
+.mat-toolbar{
+  background-color: $text-color !important;
+
+}
 
 
 
-
-
-
+@media screen and (max-width:500px){
+  .signLog{
+    font-size: 15px;
+    margin-right: 10px;
+  }
+  .layout{
+    position: relative;
+    height: 170px;
+    width: 100%;
+    background-color: $text-color;
+  }
+}
 
 

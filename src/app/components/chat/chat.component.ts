@@ -183,7 +183,7 @@ export class ChatComponent implements OnInit {
   }
 
   leaveRoom() {
-    let dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { name: this.userName } })
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { name: this.userName, text: 'do you really want to quit the chatRoom?' } })
 
     dialogRef.afterClosed().subscribe
       (

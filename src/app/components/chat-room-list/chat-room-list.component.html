@@ -1,10 +1,23 @@
-<div class="layout">
+<mat-toolbar class="d-flex justify-content-between text-light">
+  <div>
+   <span><span class="incoText">Inco</span> <span class="chatText">-Chat</span></span>
+  </div>
+ <div class="signLog">
+   <span class="incoText" style="cursor: pointer;" (click)='logout()'>Logout</span>
+ </div>
+ </mat-toolbar>
+<div class="layout" >
   <div class="container">
-    <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end  d-none d-lg-block">
       <button class="mt-5" data-step="2" data-intro="Click on the button to create new chatRoom" mat-raised-button (click)="createChatRoom()" ><mat-icon>add</mat-icon> Add new chat room</button>
     </div>
   </div>
 </div>
+
+<div class="addChatMbl d-lg-none">
+<button mat-fab mat-raised-button class="buttonColor" data-step="2" data-intro="Click on the button to create new chatRoom" (click)="createChatRoom()"><mat-icon>add</mat-icon></button>
+</div>
+
 <div class="row">
   <div class="col-lg-3"></div>
   <div class="col-lg-6" data-step="1"  data-intro="list of your chatRooms">
@@ -36,7 +49,7 @@
                   <p class="noteText" *ngIf="!rooms.isPrivate"><small >(Public)</small></p>
                 </div>
                 <div>
-                  <mat-icon color='warn'>delete</mat-icon>
+                  <mat-icon color='warn' (click)="deleteChatRoom(rooms._id)">delete</mat-icon>
                 </div>
               </div>
             </li>
@@ -44,14 +57,20 @@
       </div>
       </mat-tab>
       <mat-tab label="Chat Rooms">
-        <div class="chatListCard mt-2" >
         <ul class="list-group">
-          <li class="list-group-item">
-            <mat-form-field>
-              <input type="text" placeholder="Search ChatRoom" matInput>
+          <li class="list-group-item ">
+            <mat-form-field >
+              <input type="text" placeholder="Search ChatRoom" matInput [(ngModel)]="value">
+              <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
             </mat-form-field>
           </li>
-          <div *ngFor="let rooms of allRooms" (click)="joinPublicRoom(rooms._id,rooms.isPrivate,rooms.chatName)">
+        </ul>
+        <div class="chatListCard mt-2" >
+
+        <ul class="list-group">
+          <div *ngFor="let rooms of allRooms | filter:'chatName':value" (click)="joinPublicRoom(rooms._id,rooms.isPrivate,rooms.chatName)">
             <li class="list-group-item" *ngIf="rooms.creator!=currentUserId" >
               <div class="d-flex align-items-center justify-content-between ">
                 <div >
