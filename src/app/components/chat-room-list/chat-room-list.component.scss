@@ -81,6 +81,7 @@ $light:white;
   position: fixed;
   bottom: 5%;
   right: 5%;
+  z-index: +2;
 }
 .buttonColor{
   background-color: $text-color !important;
