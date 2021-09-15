@@ -47,8 +47,13 @@ export class SignupComponent implements OnInit {
       showBullets: false
     }).start()
   }
+  root() {
+    this.router.navigate(['/landing'])
+  }
 
-
+  login() {
+    this.router.navigate(['/login'])
+  }
   signup() {
     if (this.password.value == this.cpassword.value) {
       introJs().exit()

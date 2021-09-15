@@ -6,9 +6,20 @@ $light:white;
 
 .layout{
   position: relative;
-  height: 250px;
+  height: 150px;
   width: 100%;
   background-color: $text-color;
+}
+.mat-toolbar{
+  background-color: $text-color !important;
+
+}
+.help{
+  cursor: pointer;
+  color: $text-color;
+}
+.cursorStyle{
+  cursor: pointer;
 }
 .loginCard{
   position: relative;
@@ -50,5 +61,10 @@ $light:white;
     width: 95%;
     margin-top: -180px;
   }
-
+  .layout{
+    position: relative;
+    height: 200px;
+    width: 100%;
+    background-color: $text-color;
+  }
  }

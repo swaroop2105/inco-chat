@@ -46,6 +46,8 @@ export class ChatComponent implements OnInit {
   messages: any;
   admin: any;
   isEmoji = false;
+  newUser: any;
+  noti = true;
 
 
 
@@ -57,7 +59,8 @@ export class ChatComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id');
     this.getChatRoomDetails()
-    this.getGrpMessages()
+    this.getGrpMessages();
+    localStorage.setItem("isNotification", "yes");
 
     this.userName = localStorage.getItem('userName');
     this.chatService
@@ -73,11 +76,46 @@ export class ChatComponent implements OnInit {
         this.messages.push(obj)
         this.chatCounter += 1;
 
+        if (localStorage.getItem('isNotification') == 'yes') {
+          if (message.user != this.userName) {
+            let audio = new Audio();
+            audio.src = '../../../assets/message.wav'
+            audio.load()
+            audio.play()
+          } else {
+
+            let audio = new Audio();
+            audio.src = '../../../assets/send.mp3'
+            audio.load()
+            audio.play()
+
+          }
+        }
+
       });
 
     this.chatService.newUserJoined().
       subscribe(
         (res) => {
+
+          if (res.user != this.userName) {
+            this.newUser = res.user + ' ' + res.message;
+
+            if (localStorage.getItem('isNotification') == 'yes') {
+              let audio = new Audio();
+              audio.src = '../../../assets/newUser.mp3'
+              audio.load()
+              audio.play()
+            }
+
+
+
+            this.snackBar.open(this.newUser, 'dismiss', { duration: 2000 })
+
+
+          }
+
+
           this.getChatRoomDetails();
         }
       )
@@ -87,6 +125,18 @@ export class ChatComponent implements OnInit {
       subscribe(
         (res) => {
           this.getChatRoomDetails();
+          if (res.user != this.userName) {
+            if (localStorage.getItem('isNotification') == 'yes') {
+              let audio = new Audio();
+              audio.src = '../../../assets/leave.mp3'
+              audio.load()
+              audio.play()
+            }
+
+
+            this.newUser = res.user + ' ' + res.message;
+            this.snackBar.open(this.newUser, 'dismiss', { duration: 2000 })
+          }
         }
       )
 
@@ -107,6 +157,7 @@ export class ChatComponent implements OnInit {
       )
   }
   sendMessage() {
+
     this.closeEmoji()
     this.chatService.sendMessage(this.chatRoom.chatName, this.newMessage, this.userName);
     const obj = {
@@ -156,6 +207,17 @@ export class ChatComponent implements OnInit {
   }
   closeEmoji() {
     this.isEmoji = false;
+  }
+  notify() {
+    this.noti = true;
+    localStorage.setItem("isNotification", "yes");
+
+  }
+  stopNotify() {
+
+    this.noti = false;
+    localStorage.setItem("isNotification", "no");
+
   }
 
   getChatRoomDetails() {

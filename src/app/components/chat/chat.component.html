@@ -9,6 +9,11 @@
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
           <mat-icon class="text-light" [matBadge]=chatCounter matBadgeColor="warn" matBadgeSize="small">chat_bubble_outline</mat-icon>
         </button>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon class="text-light" *ngIf="noti" (click)="stopNotify()">notifications</mat-icon>
+          <mat-icon class="text-light" *ngIf="!noti" (click)="notify()" >notifications_off</mat-icon>
+        </button>
+
         <button   mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
           <mat-icon class="text-light" (click)="leaveRoom()" >logout</mat-icon>
         </button>

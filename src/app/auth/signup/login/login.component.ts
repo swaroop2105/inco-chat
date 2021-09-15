@@ -32,6 +32,14 @@ export class LoginComponent implements OnInit {
 
   }
 
+  root() {
+    this.router.navigate(['/landing'])
+  }
+
+  signUp() {
+    this.router.navigate(['/signup'])
+  }
+
 
 
   login() {

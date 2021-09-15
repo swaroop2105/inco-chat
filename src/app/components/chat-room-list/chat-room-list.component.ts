@@ -97,7 +97,9 @@ export class ChatRoomListComponent implements OnInit {
     dialogRef.afterClosed().
       subscribe(
         (res) => {
-          this.getUserChatRooms();
+          setTimeout(() => {
+            this.getUserChatRooms();
+          }, 1500)
         }
       )
   }
@@ -211,6 +213,7 @@ export class ChatRoomListComponent implements OnInit {
             this.chatService.deleteChatRoom(id).
               subscribe(
                 (res) => {
+                  this.toastService.info('', 'ChatRoom deleted')
                   this.getUserChatRooms()
                 }, err => {
                   this.toastService.error(err.error.message)
@@ -224,6 +227,10 @@ export class ChatRoomListComponent implements OnInit {
 
         }
       )
+  }
+
+  root() {
+    this.router.navigate(['/landing'])
   }
 
 
