@@ -14,6 +14,12 @@ $light:white;
   background-color: $text-color !important;
 
 }
+.marginRight{
+  margin-right: 8px;
+}
+.spinner-border{
+  color:  $text-color;
+ }
 .help{
   cursor: pointer;
   color: $text-color;

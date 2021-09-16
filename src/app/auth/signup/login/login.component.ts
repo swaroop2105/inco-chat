@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent implements OnInit {
   uname: any;
   checker: any;
+  isLoading = false;
 
 
   userName: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]);
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    this.isLoading = true;
     const obj = {
       displayName: this.userName.value,
       password: this.password.value
@@ -51,6 +53,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(obj).
       subscribe(
         (res) => {
+          this.isLoading = false;
           console.log(res);
 
           localStorage.setItem('userName', res.displayName);
@@ -58,6 +61,7 @@ export class LoginComponent implements OnInit {
           this.toasterService.success('', 'Login success');
           this.router.navigate(['/chatRoom'])
         }, err => {
+          this.isLoading = false;
           console.log(err);
           this.toasterService.error('', err.error.message);
 

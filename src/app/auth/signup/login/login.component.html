@@ -23,9 +23,14 @@
                 <mat-label>Password</mat-label>
                 <input type="password"  matInput required formControlName="password" >
             </mat-form-field>
-            <div class="d-grid gap-2 col-10 col-lg-6 mx-auto mt-3 mb-3 mt-lg-5">
-              <button mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="!loginForm.valid" >Login</button>
-              <small class="text-center help" (click)="signUp()">Dont have an account? Signup</small>
+            <div class="d-grid gap-2 col-10 col-lg-6 mx-auto mt-3 mb-3 mt-lg-3">
+              <button *ngIf="!isLoading" mat-raised-button color="primary" type="submit" (click)="login()" [disabled]="!loginForm.valid" >Login</button>
+                <button *ngIf="isLoading" mat-raised-button color="primary" disabled>
+                  <span class="spinner-border spinner-border-sm marginRight" role="status" aria-hidden="true"></span>
+                  Logging in...
+                </button>
+
+              <small class="text-center help mt-2" (click)="signUp()">Dont have an account? Signup</small>
             </div>
           </form>
       </div>

@@ -14,6 +14,7 @@ import * as introJs from 'intro.js'
 export class SignupComponent implements OnInit {
   uname: any;
   checker: any;
+  isLoading = false;
 
   userName: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]);
   password: FormControl = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]);
@@ -55,6 +56,7 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['/login'])
   }
   signup() {
+    this.isLoading = true;
     if (this.password.value == this.cpassword.value) {
       introJs().exit()
       const obj = {
@@ -66,11 +68,13 @@ export class SignupComponent implements OnInit {
       this.authService.signup(obj).
         subscribe(
           (res) => {
+            this.isLoading = false;
             localStorage.setItem('userName', res.displayName)
             localStorage.setItem('userId', res._id)
             this.toastService.success('', 'Signup successful')
             this.router.navigate(['/chatRoom'])
           }, err => {
+            this.isLoading = false;
             console.log(err);
             this.toastService.error('', err.error.message)
           }
@@ -79,6 +83,7 @@ export class SignupComponent implements OnInit {
     }
     else {
       this.toastService.error('', 'Confirm password miss match')
+      this.isLoading = false;
     }
 
   }

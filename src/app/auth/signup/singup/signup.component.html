@@ -39,8 +39,12 @@
 
 
           <div class="d-grid gap-2 col-10 col-lg-6 mx-auto mt-3 mb-3 mt-lg-5" data-step="4" data-intro="Click on signup and get started!">
-            <button mat-raised-button color="primary" type="submit" (click)="signup()" [disabled]="!signupForm.valid" >Signup</button>
-            <small class="text-center help" (click)="login()">Already have an account? Login</small>
+            <button *ngIf="!isLoading" mat-raised-button color="primary" type="submit" (click)="signup()" [disabled]="!signupForm.valid" >Signup</button>
+            <button *ngIf="isLoading" mat-raised-button color="primary" disabled>
+              <span class="spinner-border spinner-border-sm marginRight" role="status" aria-hidden="true"></span>
+              Signing in...
+            </button>
+            <small class="text-center help mt-2" (click)="login()">Already have an account? Login</small>
           </div>
         </form>
       </div>
